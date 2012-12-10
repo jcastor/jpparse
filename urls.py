@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
 
-urlpatterns = patterns('jparse.views',
+urlpatterns = patterns('jpparse.views',
 	url(r'^$', 'mainview'),
 )
