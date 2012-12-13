@@ -1,0 +1,35 @@
+{% extends "jpparse/index.html" %}
+
+{% block content %}
+<h3>Class: {{class.name}}</h3>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Methods</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% for method in class.methods.all %}
+                                <li><a href="{% url method_detail_view method.id %}">{{method.name}}</a></li>
+                        {%endfor%}</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Global Variable</th>
+		<th>Signature</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for variable in class.globalvariable_set.all %}
+		<tr>
+			<td>{{variable.name}}</td>
+			<td>{{variable.signature}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

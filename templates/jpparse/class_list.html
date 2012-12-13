@@ -1,0 +1,25 @@
+{% extends "jpparse/index.html" %}
+
+{% block content %}
+<h1>Class Listing</h1>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Class Name</th>
+<!--		<th>Methods</th> -->
+	</tr>
+	</thead>
+	<tbody>
+	{% for class in class_list %}
+		<tr>
+			<td><a href="{% url class_detail_view class.id %}">{{class.name}}</a></td>
+<!--			<td><ul>
+			{% for method in class.methods.all %}
+				<li><a href="{% url method_detail_view method.id %}">{{method.name}}</a></li>
+			{%endfor%} 
+			</ul></td> -->
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "jpparse/index.html" %}
+
+{% block content %}
+<h3>Method: {{method.name}}</h3>
+{% for class in method.class_set.all %}
+<h4>Of Class: {{class.name}}</h4>
+{% endfor %}
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Signature</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{method.signature}}</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Variable</th>
+		<th>Variable Signature</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for variable in method.variable_set.all %}
+		<tr>
+			<td> {{variable.name}}</td>
+			<td>{{variable.signature}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Stack</th>
+		<th>Local</th>
+		<th>Args_Size</th>
+		<th>Length</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for code in method.codesegment_set.all %}
+		<tr>
+			<td> {{code.stack}}</td>
+			<td>{{code.local}}</td>
+			<td>{{code.args_size}}</td>
+			<td>{{code.length}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
