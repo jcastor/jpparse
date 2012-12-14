@@ -4,7 +4,7 @@ from jpparse.models import Class, Method
 from jpparse.views import ClassListView
 from django.views.decorators.cache import cache_page
 urlpatterns = patterns('jpparse.views',
-	url(r'^$',TemplateView.as_view(template_name="jpparse/info.html"), name="main"),
+	url(r'^$', ClassListView.as_view(), name="main"),
 	url(r'^info/$', TemplateView.as_view(template_name="jpparse/info.html"), name="info"),
 	url(r'^classes/search/$', 'searchview'),
 	url(r'^classes/$', ClassListView.as_view(), name="class_list_view"),
