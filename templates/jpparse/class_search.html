@@ -7,6 +7,8 @@
 	<input type="text" name="q" class="input-xxlarge search-query">
 	<input type="submit" value="Search" class="btn">
 </form>
+{% if query %}
+<h3> Results for '{{query|escape}}' </h3>
 <table class="table table-striped">
 	<thead>
 	<tr>
@@ -15,7 +17,7 @@
 	</tr>
 	</thead>
 	<tbody>
-	{% for class in class_list %}
+	{% for class in results %}
 		<tr>
 			<td><a href="{% url class_detail_view class.id %}">{{class.name}}</a></td>
 <!--			<td><ul>
@@ -27,6 +29,9 @@
 	{% endfor %}
 	</tbody>
 </table>
+{% else %}
+<p> No Query Given </p>
+{% endif %}
 {% if is_paginated %}
     <div class="pagination">
         <span class="step-links">

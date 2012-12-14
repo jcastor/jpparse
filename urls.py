@@ -6,7 +6,7 @@ from django.views.decorators.cache import cache_page
 urlpatterns = patterns('jpparse.views',
 	url(r'^$',TemplateView.as_view(template_name="jpparse/info.html"), name="main"),
 	url(r'^info/$', TemplateView.as_view(template_name="jpparse/info.html"), name="info"),
-	url(r'^classes/search/$', TemplateView.as_view(template_name="jpparse/info.html"), name="class_list_search"),
+	url(r'^classes/search/$', 'searchview'),
 	url(r'^classes/$', ClassListView.as_view(), name="class_list_view"),
 #	url(r'^classes/(?P<rpp>\d+)/$', ClassListView.as_view(), name="class_rpp_list_view"),
 #	url(r'^classes/$', cache_page(ClassListView.as_view(), 60*10), name="class_list_view"),
