@@ -6,4 +6,8 @@ from django.views.decorators.cache import cache_page
 
 class ClassListView(ListView):
 	model = Class
+	results_per_page = 50
+	paginate_by = results_per_page
 	context_object_name = "class_list"
+	
+		
