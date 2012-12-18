@@ -6,17 +6,25 @@ from django.contrib.auth.models import User
 class Method(models.Model):
 	name = models.CharField(max_length=5000)
 	signature = models.CharField(max_length=400)
+	def __unicode__(self):
+		return self.name
 class Class(models.Model):
 	name = models.CharField(max_length=5000)
 	methods = models.ManyToManyField(Method, blank=True, null=True)
+	def __unicode__(self):
+		return self.name
 class Variable(models.Model):
 	name = models.CharField(max_length=400)
 	signature = models.CharField(max_length=400)
 	method = models.ForeignKey(Method)
+	def __unicode__(self):
+		return self.name
 class GlobalVariable(models.Model):
 	name = models.CharField(max_length=400)
 	signature = models.CharField(max_length=400)
 	classowner = models.ForeignKey(Class)
+	def __unicode__(self):
+		return self.name
 class CodeSegment(models.Model):
 	stack = models.IntegerField()
 	local = models.IntegerField()
