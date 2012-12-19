@@ -6,3 +6,8 @@ myproject/
 apache2/
 .svn/
 migrations/
+static_media/debian4/
+static_media/debian5/
+static_media/debian6/
+static_media/admin/
+static_media/css/
